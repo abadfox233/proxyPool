@@ -3,11 +3,9 @@ package org.ning.proxypool.crawlers;
 import cn.wanghaomiao.seimi.annotation.Crawler;
 import cn.wanghaomiao.seimi.def.BaseSeimiCrawler;
 import cn.wanghaomiao.seimi.http.SeimiHttpType;
-import cn.wanghaomiao.seimi.struct.Request;
 import cn.wanghaomiao.seimi.struct.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.ning.proxypool.plugincore.PluginInterceptor;
-import org.ning.proxypool.plugincore.WebSitePlugin;
 
 /**
  * @author NingWang
@@ -22,7 +20,6 @@ public class ProxyCrawler extends BaseSeimiCrawler {
     public String[] startUrls() {
 
         return new String[]{
-
 
         };
     }

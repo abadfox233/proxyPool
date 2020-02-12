@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * @author NingWang
  * 2020-02-11 18:12
- * IP海
+ * Freeip
  */
 @Slf4j
 @WebSitePlugin(domain = "(https|http)://www\\.freeip\\.top.*")

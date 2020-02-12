@@ -71,10 +71,18 @@ public class ProxyCheckServiceImp implements ProxyCheckService {
                 if(!"百度一下，你就知道".equals(doc.selOne("//title/text()"))){
                     flag = false;
                 }
-            }else
+            }else{
                 flag = false;
+            }
+            response.close();
+
         }catch (Exception e){
             flag = false;
+            try{
+                response.close();
+            }catch (Exception ignore){
+
+            }
         }
         return flag;
 

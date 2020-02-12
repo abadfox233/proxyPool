@@ -56,7 +56,7 @@ public class OKhttpClientBuilder {
 
     static public OkHttpClient getClientFromProxy(Proxy proxy){
          java.net.Proxy stdProxy = proxy.getStdProxy();
-         hcBuilder.callTimeout(20*1000, TimeUnit.MILLISECONDS);
+//         hcBuilder.callTimeout(20*1000, TimeUnit.MILLISECONDS);
          if(stdProxy!=null){
              return hcBuilder.proxy(stdProxy).build();
          }

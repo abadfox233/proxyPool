@@ -6,15 +6,14 @@ import cn.wanghaomiao.seimi.struct.Request;
 import lombok.extern.slf4j.Slf4j;
 import org.ning.proxypool.domain.Proxy;
 import org.ning.proxypool.service.ProxyCheckService;
-import org.ning.proxypool.service.ProxyService;
 import org.ning.proxypool.service.ProxyScheduleService;
+import org.ning.proxypool.service.ProxyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author NingWang
@@ -40,6 +39,12 @@ public class ProxyScheduleServiceImp implements ProxyScheduleService {
         proxy_crawler.sendRequest(Request.build("http://www.goubanjia.com/", "start"));
 
         proxy_crawler.sendRequest(Request.build("https://www.kuaidaili.com/free/inha/", "start"));
+
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        }catch (InterruptedException ignore){
+
+        }
         proxy_crawler.sendRequest(Request.build("https://www.kuaidaili.com/free/intr/", "start"));
 
         proxy_crawler.sendRequest(Request.build("http://www.ip3366.net/free/?stype=1", "start"));
@@ -65,7 +70,7 @@ public class ProxyScheduleServiceImp implements ProxyScheduleService {
     @Override
 
     public void checkProxy() {
-        log.debug("开始执行检测");
+        log.info("开始执行检测");
        dispatchProxy2Check(true);
        dispatchProxy2Check(false);
 
