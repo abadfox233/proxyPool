@@ -104,8 +104,8 @@ proxy.getter.cron = 0 0/5 * * * ?
 
 * 方法2: 自定义爬虫
 	
-	1.   在 [cralwer]( https://github.com/abadfox233/proxyPool/tree/master/src/main/java/org/ning/proxypool/crawlers ) 包中添加自定义爬虫, 具体方法请查看[SemiCralwer]( http://wiki.seimicrawler.org/ )文档
-	2.   重启代码即可
+	1. 在 [cralwer]( https://github.com/abadfox233/proxyPool/tree/master/src/main/java/org/ning/proxypool/crawlers ) 包中添加自定义爬虫, 具体方法请查看[SemiCralwer]( http://wiki.seimicrawler.org/ )文档
+	2. 重启代码即可
 
 ### 内置代理解析
 - 框架内置代理解析插件
@@ -127,7 +127,7 @@ proxy.getter.cron = 0 0/5 * * * ?
 
 * 本框架参考python 版本的 [proxy_pool](https://github.com/jhao104/proxy_pool)
 
-* 本框架基于[SemiCralwer]( https://github.com/zhegexiaohuozi/SeimiCrawler )
+* 本框架基于 [SemiCralwer](https://github.com/zhegexiaohuozi/SeimiCrawler)
 
 ### 问题反馈
-	任何问题欢迎在[Issues](https://github.com/abadfox233/proxyPool/issues) 中反馈
+	任何问题欢迎在 [Issues](https://github.com/abadfox233/proxyPool/issues) 中反馈
