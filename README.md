@@ -4,7 +4,7 @@ Java 版 Proxy Pool
 
 ### 项目介绍
 
-* 测试版本  [![](https://img.shields.io/badge/java-8-green)](https://github.com/abadfox233/proxyPool)  [![](https://img.shields.io/badge/spring--boot-2.x-green)](https://github.com/abadfox233/proxyPool)
+* 测试版本  [![](https://img.shields.io/badge/java-8-green.svg)](https://github.com/abadfox233/proxyPool)  [![](https://img.shields.io/badge/spring--boot-2.x-green.svg)](https://github.com/abadfox233/proxyPool)
 * 项目依赖
    * redis
    * java 8 及以上
