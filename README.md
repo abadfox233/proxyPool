@@ -130,4 +130,4 @@ proxy.getter.cron = 0 0/5 * * * ?
 * 本框架基于 [SemiCralwer](https://github.com/zhegexiaohuozi/SeimiCrawler)
 
 ### 问题反馈
-	任何问题欢迎在 [Issues](https://github.com/abadfox233/proxyPool/issues) 中反馈
+* 任何问题欢迎在 [Issues](https://github.com/abadfox233/proxyPool/issues) 中反馈
