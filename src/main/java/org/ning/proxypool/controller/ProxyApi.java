@@ -39,7 +39,13 @@ public class ProxyApi {
 
     @GetMapping("get")
     Map<String, Object> getProxy(){
-        return proxyService.getProxy(true).convert2Map();
+        Proxy proxy = proxyService.getProxy(true);
+        if(proxy!=null){
+            return proxyService.getProxy(true).convert2Map();
+        }
+        else
+            return new HashMap<String, Object>();
+
     }
 
     @GetMapping("/status")
