@@ -58,9 +58,98 @@ proxy.getter.cron = 0 0/5 * * * ?
 
 * 方法1：（使用默认通用爬虫下载网页解析代理）
 
-  1.  首先在 [ProxyScheduleServiceImp]( https://github.com/abadfox233/proxyPool/blob/master/src/main/java/org/ning/proxypool/service/imp/ProxyScheduleServiceImp.java ) 添加 需要爬取的网址
+  1. 首先在 [ProxyScheduleServiceImp]( https://github.com/abadfox233/proxyPool/blob/master/src/main/java/org/ning/proxypool/service/imp/ProxyScheduleServiceImp.java ) 添加 需要爬取的网址
 
-  2.  然后在 [plugin]( https://github.com/abadfox233/proxyPool/tree/master/src/main/java/org/ning/proxypool/plugins ) 包中添加解析插件
+     ```java
+     @Service
+     @Slf4j
+     public class ProxyScheduleServiceImp implements ProxyScheduleService {
+     
+         @Autowired
+         ProxyService proxyService;
+         @Autowired
+         ProxyCheckService  proxyCheckService;
+     
+     
+         @Override
+         // 代理获取
+         public void getProxy() {
+             log.debug("开始获取代理");
+             CrawlerModel proxy_crawler = CrawlerCache.getCrawlerModel("proxy_crawler");
+     		
+             // 添加代理网址
+             proxy_crawler.sendRequest(Request.build("http://www.data5u.com/", "start"));
+     
+             proxy_crawler.sendRequest(Request.build("http://www.goubanjia.com/", "start"));
+     
+             proxy_crawler.sendRequest(Request.build("https://www.kuaidaili.com/free/inha/", "start"));
+     		
+             // 防止反爬
+             try {
+                 TimeUnit.SECONDS.sleep(1);
+             }catch (InterruptedException ignore){
+     
+             }
+             proxy_crawler.sendRequest(Request.build("https://www.kuaidaili.com/free/intr/", "start"));
+     
+             proxy_crawler.sendRequest(Request.build("http://www.ip3366.net/free/?stype=1", "start"));
+             proxy_crawler.sendRequest(Request.build("http://www.ip3366.net/free/?stype=2", "start"));
+     
+             proxy_crawler.sendRequest(Request.build("http://www.iphai.com/free/ng", "start"));
+             proxy_crawler.sendRequest(Request.build("http://www.iphai.com/free/np", "start"));
+             proxy_crawler.sendRequest(Request.build("http://www.iphai.com/free/wg", "start"));
+             proxy_crawler.sendRequest(Request.build("http://www.iphai.com/free/wp", "start"));
+     
+             proxy_crawler.sendRequest(Request.build("https://www.freeip.top/", "start"));
+     
+             String xiCi1 = "https://www.xicidaili.com/nt/";
+             String xiCi2 = "https://www.xicidaili.com/nn/";
+             for(int i=1;i<=10;i++){
+                 proxy_crawler.sendRequest(Request.build(xiCi1 + i, "start"));
+                 proxy_crawler.sendRequest(Request.build(xiCi2 + i, "start"));
+                 try {
+                     TimeUnit.SECONDS.sleep(1);
+                 }catch (InterruptedException ignore){
+     
+                 }
+             }
+     
+     
+         }
+     
+         @Override
+     	// 代理验证
+         public void checkProxy() {
+             log.debug("开始执行检测");
+            dispatchProxy2Check(true);
+            dispatchProxy2Check(false);
+     
+         }
+     
+         private void dispatchProxy2Check(boolean check){
+             Set<Proxy> tempProxySet = new HashSet<>();
+             Set<Proxy> proxySet = proxyService.getAllProxy(check);
+             for(Proxy proxy:proxySet){
+                 if(tempProxySet.size()==30){
+                     // 多线程验证代理
+                     proxyCheckService.checkProxy(tempProxySet, check);
+                     tempProxySet = new HashSet<>();
+                 }else {
+                     tempProxySet.add(proxy);
+                 }
+             }
+             if(tempProxySet.size()>0){
+                 proxyCheckService.checkProxy(tempProxySet, check);
+     //            tempProxySet = new HashSet<>();
+             }
+         }
+     }
+     
+     ```
+
+     
+
+  2. 然后在 [plugin]( https://github.com/abadfox233/proxyPool/tree/master/src/main/java/org/ning/proxypool/plugins ) 包中添加解析插件
 
      [示例代码]( https://github.com/abadfox233/proxyPool/blob/master/src/main/java/org/ning/proxypool/plugins/KuaiPlugin.java )
 

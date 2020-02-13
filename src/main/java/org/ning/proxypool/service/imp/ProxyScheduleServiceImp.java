@@ -57,12 +57,17 @@ public class ProxyScheduleServiceImp implements ProxyScheduleService {
 
         proxy_crawler.sendRequest(Request.build("https://www.freeip.top/", "start"));
 
-//        String xiCi1 = "https://www.xicidaili.com/nt/";
-//        String xiCi2 = "https://www.xicidaili.com/nn/";
-//        for(int i=1;i<=10;i++){
-//            proxy_crawler.sendRequest(Request.build(xiCi1 + i, "start"));
-//            proxy_crawler.sendRequest(Request.build(xiCi2 + i, "start"));
-//        }
+        String xiCi1 = "https://www.xicidaili.com/nt/";
+        String xiCi2 = "https://www.xicidaili.com/nn/";
+        for(int i=1;i<=10;i++){
+            proxy_crawler.sendRequest(Request.build(xiCi1 + i, "start"));
+            proxy_crawler.sendRequest(Request.build(xiCi2 + i, "start"));
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            }catch (InterruptedException ignore){
+
+            }
+        }
 
 
     }
@@ -70,7 +75,7 @@ public class ProxyScheduleServiceImp implements ProxyScheduleService {
     @Override
 
     public void checkProxy() {
-        log.info("开始执行检测");
+        log.debug("开始执行检测");
        dispatchProxy2Check(true);
        dispatchProxy2Check(false);
 
@@ -89,7 +94,7 @@ public class ProxyScheduleServiceImp implements ProxyScheduleService {
         }
         if(tempProxySet.size()>0){
             proxyCheckService.checkProxy(tempProxySet, check);
-            tempProxySet = new HashSet<>();
+//            tempProxySet = new HashSet<>();
         }
     }
 }
