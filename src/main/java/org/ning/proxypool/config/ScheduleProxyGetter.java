@@ -16,7 +16,7 @@ import java.util.Date;
 /**
  * @author NingWang
  * 2020-02-12 13:37
- * Proxy check
+ * Proxy getter定时任务
  */
 @Component
 @Slf4j

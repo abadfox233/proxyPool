@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author NingWang
  * 2020-02-11 22:14
+ * 定时任务 负责获取代理以及校验代理
  */
 @Service
 @Slf4j

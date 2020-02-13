@@ -10,6 +10,7 @@ import java.util.concurrent.Executor;
 /**
  * @author NingWang
  * 2020-02-11 21:51
+ * 检测代理的线程池
  */
 @Configuration
 @EnableAsync

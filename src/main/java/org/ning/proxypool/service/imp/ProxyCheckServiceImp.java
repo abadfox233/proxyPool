@@ -93,6 +93,7 @@ public class ProxyCheckServiceImp implements ProxyCheckService {
      * @param proxy 代理
      * @param success 验证是否成功
      * @param check 代理队列
+     * 连续3次验证失败的代理将会被删除
      */
     private void processProxy(Proxy proxy, boolean success, boolean check){
         if(success){
@@ -104,6 +105,7 @@ public class ProxyCheckServiceImp implements ProxyCheckService {
                 proxyService.removeProxy(proxy, true);
             }
             proxy.setCheckCount(proxy.getCheckCount()+1);
+            proxy.setFailCount(0);
             proxy.setLastTimestamp((System.currentTimeMillis()));
             proxy.setLastStatus(true);
             proxyService.saveProxy(proxy, true, false);
@@ -117,7 +119,7 @@ public class ProxyCheckServiceImp implements ProxyCheckService {
                 proxy.setFailCount(proxy.getFailCount()+1);
                 proxy.setLastTimestamp((System.currentTimeMillis()));
                 proxy.setLastStatus(false);
-                if((double)proxy.getFailCount()/proxy.getCheckCount()<0.5){
+                if(proxy.getFailCount()<3){
                     proxyService.saveProxy(proxy, true, false);
                 }
             }

@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author NingWang
  * 2020-02-11 20:10
+ * okhttpClient 工厂方法
  */
 @Slf4j
 @Component

@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * @author NingWang
  * 2019-12-06 15:02
- * description: proxy 中对每个网站的拦截器
+ * description: proxy 中对每个网站的拦截器 把成功匹配的response交由指定的插件进行处理
  */
 @Interceptor(everyMethod = false)
 public class ProxyPluginInterceptor implements SeimiInterceptor {
