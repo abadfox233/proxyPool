@@ -13,7 +13,7 @@ import org.ning.proxypool.plugincore.PluginInterceptor;
  * 爬取代理框架爬虫
  */
 @Slf4j
-@Crawler(name = "proxy_crawler", delay = 5, useUnrepeated = false, httpType = SeimiHttpType.OK_HTTP3)
+@Crawler(name = "proxy_crawler", delay = 3, useUnrepeated = false, httpType = SeimiHttpType.OK_HTTP3)
 public class ProxyCrawler extends BaseSeimiCrawler {
 
     @Override

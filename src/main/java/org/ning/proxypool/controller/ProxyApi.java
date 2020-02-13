@@ -37,6 +37,11 @@ public class ProxyApi {
        return result;
     }
 
+    @GetMapping("get")
+    Map<String, Object> getProxy(){
+        return proxyService.getProxy(true).convert2Map();
+    }
+
     @GetMapping("/status")
     Map<String, Object> getStatus(){
         Map<String, Object> result = new HashMap<>();

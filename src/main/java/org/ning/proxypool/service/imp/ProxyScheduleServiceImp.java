@@ -63,7 +63,7 @@ public class ProxyScheduleServiceImp implements ProxyScheduleService {
             proxy_crawler.sendRequest(Request.build(xiCi1 + i, "start"));
             proxy_crawler.sendRequest(Request.build(xiCi2 + i, "start"));
             try {
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.SECONDS.sleep(5);
             }catch (InterruptedException ignore){
 
             }

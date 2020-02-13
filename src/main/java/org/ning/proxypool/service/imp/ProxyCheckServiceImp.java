@@ -116,7 +116,7 @@ public class ProxyCheckServiceImp implements ProxyCheckService {
                 proxy.setCheckCount(proxy.getCheckCount()+1);
                 proxy.setFailCount(proxy.getFailCount()+1);
                 proxy.setLastTimestamp((System.currentTimeMillis()));
-                proxy.setLastStatus(true);
+                proxy.setLastStatus(false);
                 if((double)proxy.getFailCount()/proxy.getCheckCount()<0.5){
                     proxyService.saveProxy(proxy, true, false);
                 }
