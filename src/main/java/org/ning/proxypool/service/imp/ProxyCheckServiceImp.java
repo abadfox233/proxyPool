@@ -27,7 +27,7 @@ public class ProxyCheckServiceImp implements ProxyCheckService {
 
     @Autowired
     ProxyService proxyService;
-    private final Request checkRequest = new Request.Builder().url("http://www.baidu.com")
+    private final Request checkRequest = new Request.Builder().url("http://www.thefifthcolumn.xyz/Forum/")
             .addHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36")
             .build();
 
@@ -68,9 +68,15 @@ public class ProxyCheckServiceImp implements ProxyCheckService {
         try{
             if(response.isSuccessful()&&response.body()!=null){
                 JXDocument doc = JXDocument.create(response.body().string());
-                if(!"百度一下，你就知道".equals(doc.selOne("//title/text()"))){
+//                if(!"百度一下，你就知道".equals(doc.selOne("//title/text()"))){
+//                    flag = false;
+//                }
+
+                String title = (String) doc.selOne("//title/text()");
+                if(!title.contains("The Fifth Column Forum")){
                     flag = false;
                 }
+
             }else{
                 flag = false;
             }
